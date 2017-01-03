@@ -1,0 +1,25 @@
+<h1>Show List</h1>
+
+<p>
+  <strong>List:</strong>
+  <%= @list.name %>
+</p>
+ 
+<table>
+  <tr>
+    <th>Itens</th>
+    <th>Categoria</th>
+  </tr>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        <%= item.name %>
+      </td>
+      <td>
+        <%= item.category.name %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back', lists_path %>

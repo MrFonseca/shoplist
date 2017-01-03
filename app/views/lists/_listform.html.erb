@@ -1,0 +1,17 @@
+<%= form_for @list do |f| %>
+ 
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= collection_check_boxes(:list, :item_ids, @items, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %><br>
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
