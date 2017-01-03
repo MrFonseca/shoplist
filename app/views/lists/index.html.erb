@@ -1,0 +1,23 @@
+<h1>Índice de listas</h1>
+
+<%= link_to 'New List', new_list_path %>
+
+<h1>Listas</h1>
+ 
+<table>
+  <tr>
+    <th>Lista</th>
+    <th>Número de Itens</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @lists.each do |list| %>
+    <tr>
+      <td><%= list.name %></td>
+      <td><%= list.items.size %></td>
+      <td><%= link_to 'Show', list_path(list) %></td>
+      <td><%= link_to 'Edit', edit_list_path(list) %></td>
+      <td><%= link_to 'Destroy', list_path(list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
