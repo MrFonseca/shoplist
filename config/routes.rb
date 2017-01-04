@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'staticpages#home'
+  root 'static_pages#home'
 
 	resources :items, except: [:show, :new]
   resources :categories, except: :show
