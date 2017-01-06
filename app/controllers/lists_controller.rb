@@ -5,7 +5,14 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @items = @list.items
+    @list_items = @list.list_items
+  end
+
+  def check_item
+    @list = List.find(params[:id])
+    @list_item = @list.list_items.find_by(item_id: params[:item_id])
+    @list_item.toggle!(:done)
+    redirect_to @list
   end
 
   def new
