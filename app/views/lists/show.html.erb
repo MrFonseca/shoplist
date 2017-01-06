@@ -1,7 +1,7 @@
 <h1>Show List</h1>
 
 <p>
-  <strong>List:</strong>
+  <strong>Lista do super:</strong>
   <%= @list.name %>
 </p>
  
@@ -10,14 +10,16 @@
     <th>Itens</th>
     <th>Categoria</th>
   </tr>
-  <% @items.each do |item| %>
-    <tr>
+  <% @list_items.each do |list_item| %>
+    <tr class="<%= 'del' if list_item.done == true %>">
       <td>
-        <%= item.name %>
+        <%= list_item.item.name %>
       </td>
       <td>
-        <%= item.category.name %>
+        <%= list_item.item.category.name %>
       </td>
+      <td>
+        <%= link_to (list_item.done == true ? 'uncheck' : 'check'), check_item_list_path(@list, item_id: list_item.item.id) %>
     </tr>
   <% end %>
 </table>
