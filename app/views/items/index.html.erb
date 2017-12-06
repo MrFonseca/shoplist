@@ -1,23 +1,29 @@
-<%= link_to 'Home', root_path %>
-
-<%= render 'form' %>
-
-<table>
-	<tr>
-		<th>Lista de Compras</th>
-    <th>Categoria</th>
-    <th colspan="2"></th>
-	</tr>
-	<% @items.each do |item| %>
-		<tr>
-			<td>
-				<%= item.name %>
-			</td>
-      <td>
-        <%= item.category.name %>
-      </td>
-			<td><%= link_to 'Edit', edit_item_path(item) %></td>
-			<td><%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-	<% end %>
-</table>
+<%= provide(:title, "Itens") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="item-form">
+      <%= render 'form' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Categoria</th>
+          <th scope="col" colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.category.name %></td>
+          <td><%= link_to 'Edit', edit_item_path(item) %></td>
+          <td><%= link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

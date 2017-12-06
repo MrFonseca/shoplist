@@ -1,17 +1,28 @@
-<%= form_for @list do |f| %>
- 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
-    <%= collection_check_boxes(:list, :item_ids, @items, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %><br>
-    <% end %>
-  </p>
-
+<div class="form-row">
+  <%= form_for @list do |f| %>
+  <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= collection_check_boxes(:list, :item_ids, @items, :id, :name) do |b| %>
+        <tr>
+          <td><%= b.check_box %></td>
+          <td><%= b.text %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>   
+  </div>
   <p>
     <%= f.submit %>
   </p>
-<% end %>
+  <% end %>
+</div>

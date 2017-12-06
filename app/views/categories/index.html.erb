@@ -1,18 +1,29 @@
-<%= link_to 'Home', root_path %>
+<% provide(:title, "Categorias") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="category_form">
+      <%= render 'categoryform' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col" colspan="2"></th>
+        </tr>        
+      </thead>
+      <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= link_to 'Edit', edit_category_path(category) %></td>
+          <td><%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>        
+      </tbody>
 
-<%= link_to 'New category', new_category_path %>
+    </table>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Categoria</th>
-    <th colspan="2"></th>
-  </tr>
- 
-  <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.name %></td>
-      <td><%= link_to 'Edit', edit_category_path(category) %></td>
-      <td><%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>

@@ -1,0 +1,15 @@
+<header class="navbar navbar-fixed-top navbar-light" style="background-color: #ff6600">
+  <div class="container">
+    <%= link_to "shop list", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= image_tag "shopping-cart-2.png", class: "logo-img" %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Listas", lists_path, class: "font-navbar" %></li>
+        <li><%= link_to "Itens", items_path, class: "font-navbar" %></li>
+        <li><%= link_to "Categorias", categories_path, class: "font-navbar" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

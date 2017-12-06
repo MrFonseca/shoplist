@@ -1,17 +1,16 @@
-<h1>Show List</h1>
-
-<p>
-  <strong>Lista do super:</strong>
-  <%= @list.name %>
-</p>
+<% provide(:title, @list.name) %>
+<h1><%= @list.name %></h1>
  
-<table>
-  <tr>
-    <th>Itens</th>
-    <th>Categoria</th>
-  </tr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Itens</th>
+      <th scope="col">Categoria</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @list_items.each do |list_item| %>
-    <tr class="<%= 'del' if list_item.done == true %>">
+    <tr class="<%= 'item-bought' if list_item.done == true %>">
       <td>
         <%= list_item.item.name %>
       </td>
@@ -19,9 +18,11 @@
         <%= list_item.item.category.name %>
       </td>
       <td>
-        <%= link_to (list_item.done == true ? 'uncheck' : 'check'), check_item_list_path(@list, item_id: list_item.item.id) %>
+        <%= link_to (list_item.done == true ? image_tag('c_box.png') : image_tag('c_box_blank')), check_item_list_path(@list, item_id: list_item.item.id) %>
+      </td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 <%= link_to 'Back', lists_path %>
